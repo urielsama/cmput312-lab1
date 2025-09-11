@@ -14,8 +14,9 @@ def main(command_array):
         print(
             f"P Controller: Moving with left speed {left_speed}, right speed {right_speed} for {duration} seconds."
         )
-        sleep(duration)
-    tank_drive.on(SpeedPercent(left_speed), SpeedPercent(right_speed))
+        tank_drive.on_for_seconds(
+            SpeedPercent(left_speed), SpeedPercent(right_speed), duration
+        )
 
 
 if __name__ == "__main__":

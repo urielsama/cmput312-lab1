@@ -1,7 +1,6 @@
-from error_collector import rotation_gyro, straight_line_gyro
+from error_collector import rotation_gyro, straight_line_gyro, straight_line_encoder
 from imports.import_ev3dev2 import *
-from p_controller.paths import circle, lemniscate, reactangle, straight_line
-from p_controller import p_controller
+from p_controller import p_controller, paths
 from time import sleep
 from threading import Thread
 
@@ -13,7 +12,11 @@ def main():
     thread_array = [
         Thread(target=straight_line_gyro.main),
         Thread(target=rotation_gyro.main),
-        Thread(target=p_controller.main, args=(circle.command_circle())),
+        Thread(target=straight_line_encoder.main),
+        Thread(target=p_controller.main, args=(paths.command_circle(),)),
+        # Thread(target=p_controller.main, args=(paths.command_lemniscate(),)),
+        # Thread(target=p_controller.main, args=(paths.command_rectangle(),)),
+        # Thread(target=p_controller.main, args=(paths.command_straight_line(),)),
     ]
 
     # Start the threads
