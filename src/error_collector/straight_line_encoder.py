@@ -10,6 +10,8 @@ def main():
     left_encoder = left_motor.position
     right_encoder = right_motor.position
 
+    print("Starting motors position:", left_encoder, right_encoder)
+
     encoder_readings = []
     iters = 30
     hz = 60
@@ -18,6 +20,8 @@ def main():
         left_encoder = left_motor.position
         right_encoder = right_motor.position
         encoder_readings.append((left_encoder, right_encoder))
+    
+    print("Ending motors position:", left_encoder, right_encoder)
 
     file = open("straight_line_encoder_data.txt", "w")
     file.write(str(encoder_readings))
