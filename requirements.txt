@@ -1,0 +1,5 @@
+#You may also need to install the black extension for VSCode
+
+python-ev3dev2==2.1.0
+black==25.1.0
+isort==6.0.1
