@@ -18,21 +18,15 @@ def main():
 
     init_gy_angle = gy.angle
     angles_during_trial = []
+    errors_during_trial=[]
 
-    iters = 30
-    straight_line_speed = 30
-    for i in range(iters):
-        tank_drive.on(
-            SpeedPercent(straight_line_speed), SpeedPercent(straight_line_speed)
-        )
+    seconds = 5
+    hz = 60
+    for i in range(seconds * hz):
+        sleep(1 / hz)
         curr_angle = gy.angle
         angles_during_trial.append(curr_angle)
-
-    errors_during_trial = []
-    for angle in angles_during_trial:
-        errors_during_trial.append(
-            abs(angle - init_gy_angle)
-        )  # we could do abs OR we could do **2
+        errors_during_trial.append(abs(curr_angle-init_gy_angle))
 
     print("METHOD1, GYRO: errors during trial:", errors_during_trial)
 
